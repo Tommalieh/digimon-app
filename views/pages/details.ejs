@@ -16,10 +16,12 @@
                 <input type="submit" value="Remove">
             </form>
 
-            <form action="/digimonupdate/">
-                <input type="text" name="digimon_name" id="" placeholder="Enter a new name">
-                <input type="text" name="digimon_level" id="" placeholder="Enter a new level">
+            <form action="/digimonupdate/?_method=PUT" method="POST">
+                <input type="hidden" name="digimon_id" value="<%= digimon.id %>">
+                <input type="text" name="digimon_name"  placeholder="Enter a new name">
+                <input type="text" name="digimon_level" placeholder="Enter a new level">
                 <textarea name="digimon_img" id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="Update Details">
             </form>
         </div>
     <%})%>

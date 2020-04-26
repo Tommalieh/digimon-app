@@ -89,11 +89,17 @@ function delteDigimon(req, res){
     // res.status(200).send(digimon_name);
 }
 
-// app.put('/digimonupdate/', updateDigimonDetails)
+app.put('/digimonupdate/', updateDigimonDetails)
 
-// function updateDigimonDetails(req, res){
-
-// }
+function updateDigimonDetails(req, res){
+    const {digimon_name, digimon_level, digimon_img, digimon_id} = req.body;
+    console.log(digimon_name, digimon_level, digimon_img);
+    const SQL = 'UPDATE digimons SET digimon_name=$1, digimon_img=$2, digimon_level=$3 WHERE id=$4 RETURNING *'
+    const values = [digimon_name, digimon_img, digimon_level, digimon_id];
+    client.query(SQL, values).then(result => {
+        res.redirect('/favorites/')
+    })
+}
 
 client.connect().then(() => {
     app.listen(PORT, () =>{
