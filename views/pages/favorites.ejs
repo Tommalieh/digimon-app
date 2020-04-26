@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+</head>
+<body>
+    <% digimons.forEach(digimon => {%>
+        <div>
+            <h1> <%= digimon.digimon_name %> </h1>
+            <img src="<%= digimon.digimon_img %>" alt="<%= digimon.name %>">
+            <h2><%= digimon.digimon_level %></h2>
+            <form action="/digimondetails<%= digimon.digimon_name %>/" method="POST">
+                <input type="submit" value="View Details">
+            </form>
+        </div>
+    <%})%>
+</body>
+</html>

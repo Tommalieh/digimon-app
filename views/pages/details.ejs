@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+</head>
+<body>
+    <% digimons.forEach(digimon => {%>
+        <div>
+            <h1> <%= digimon.digimon_name %> </h1>
+            <img src="<%= digimon.digimon_img %>" alt="<%= digimon.digimon_name %>">
+            <h2><%= digimon.digimon_level %></h2>
+            <form action="/digimondelete<%= digimon.digimon_name %>/?_method=DELETE" method="POST">
+                <!-- <input type="hidden" name="digimon_name" value="<%= digimon.name %>"> -->
+                <input type="submit" value="Remove">
+            </form>
+
+            <form action="/digimonupdate/">
+                <input type="text" name="digimon_name" id="" placeholder="Enter a new name">
+                <input type="text" name="digimon_level" id="" placeholder="Enter a new level">
+                <textarea name="digimon_img" id="" cols="30" rows="10"></textarea>
+            </form>
+        </div>
+    <%})%>
+</body>
+</html>
